@@ -2,17 +2,12 @@ package ch.keepcalm.hateoasdemo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.hateoas.IanaLinkRelations
-import org.springframework.hateoas.Link
-import org.springframework.hateoas.MediaTypes
-import org.springframework.hateoas.RepresentationModel
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
+import org.springframework.hateoas.*
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn
-import org.springframework.hateoas.server.mvc.add
-import org.springframework.http.HttpEntity
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
 @SpringBootApplication
 class HateoasDemoApplication
@@ -60,14 +55,14 @@ class PersonController{
 	@GetMapping
 	fun show (): PersonModel {
 		val person = PersonModel(id= 42, firstname = "John", lastname = "Doe")
-//		person.add(Link("https://myhost/people/42"))
+		//person.add(Link("https://myhost/people/42"))
 		val self = linkTo(PersonController::class.java).slash(person.id).withSelfRel()
 		person.add(self)
 		return person
 	}
 
 	@GetMapping(path = ["/hello"])
-	fun hello () = "Hello..."
+	fun hello () = EntityModel("hello")
 
 
 }
