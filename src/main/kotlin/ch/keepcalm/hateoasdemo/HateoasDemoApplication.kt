@@ -26,22 +26,12 @@ fun main(args: Array<String>) {
 
 @RestController
 @RequestMapping("/", produces = [MediaTypes.HAL_JSON_VALUE])
-class IndexController {
-
-//	@GetMapping
-//	fun api() {
-//		val method = PersonController::class.java.getMethod("show", Long::class.java)
-//		val link = linkTo(method, 2L).withSelfRel()
-////		val link = linkTo(PersonController::class.java).slash(person.getId()).withSelfRel()
-//
-//	}
-
-
+class IndexController : RepresentationModel<IndexController>() {
 
 	@GetMapping
-	fun api(): RepresentationModel<Index> {
+	fun api(): RepresentationModel<IndexController> {
 
-		val model = RepresentationModel<Index>()
+		val model = RepresentationModel<IndexController>()
 		model.add(linkTo(methodOn(PersonController::class.java).show()).withRel("person"))
 
 		val method = PersonController::class.java.getMethod("show")
@@ -58,10 +48,8 @@ class IndexController {
 		return model
 
 	}
-
 }
 
-open class Index : RepresentationModel<Index>()
 
 
 @RestController
