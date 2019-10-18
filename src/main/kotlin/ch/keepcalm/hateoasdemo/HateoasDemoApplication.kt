@@ -33,6 +33,7 @@ class IndexController : RepresentationModel<IndexController>() {
 
 		val model = RepresentationModel<IndexController>()
 		model.add(linkTo(methodOn(PersonController::class.java).show()).withRel("person"))
+		model.add(linkTo(methodOn(PersonController::class.java).hello()).withRel("hello"))
 
 		val method = PersonController::class.java.getMethod("show")
 		model.add(linkTo(method, 2L).withSelfRel())
@@ -64,6 +65,11 @@ class PersonController{
 		person.add(self)
 		return person
 	}
+
+	@GetMapping(path = ["/hello"])
+	fun hello () = "Hello..."
+
+
 }
 
 

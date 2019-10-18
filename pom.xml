@@ -72,7 +72,7 @@
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<configuration>
 					<args>
-						<arg>-Xjsr305=strict</arg>
+						<arg>-Xjsr305=warn</arg>
 					</args>
 					<compilerPlugins>
 						<plugin>spring</plugin>
