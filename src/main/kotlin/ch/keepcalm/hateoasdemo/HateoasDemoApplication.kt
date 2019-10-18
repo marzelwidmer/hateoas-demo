@@ -24,26 +24,22 @@ fun main(args: Array<String>) {
 class IndexController : RepresentationModel<IndexController>() {
 
 	@GetMapping
-	fun api(): RepresentationModel<IndexController> {
+	fun api(): RepresentationModel<IndexController>  = RepresentationModel<IndexController>()
+			.apply {
 
-		val model = RepresentationModel<IndexController>()
-		model.add(linkTo(methodOn(PersonController::class.java).show()).withRel("person"))
-		model.add(linkTo(methodOn(PersonController::class.java).hello()).withRel("hello"))
+				add(linkTo(methodOn(PersonController::class.java).show()).withRel("person"))
+				add(linkTo(methodOn(PersonController::class.java).hello()).withRel("hello"))
 
-		val method = PersonController::class.java.getMethod("show")
-		model.add(linkTo(method, 2L).withSelfRel())
+				val method = PersonController::class.java.getMethod("show")
+				add(linkTo(method, 2L).withSelfRel())
+				add(Link("/some-resource", IanaLinkRelations.NEXT))
+				add(Link("/some-resource", IanaLinkRelations.PREVIOUS))
+				add(Link("/some-resource", IanaLinkRelations.PREFETCH))
+				add(Link("/some-resource", IanaLinkRelations.AUTHOR))
+				add(Link("/some-resource", IanaLinkRelations.EDIT))
+				add(Link("/some-resource", IanaLinkRelations.LAST))
 
-		model.add(Link("/some-resource", IanaLinkRelations.NEXT))
-		model.add(Link("/some-resource", IanaLinkRelations.PREVIOUS))
-
-		model.add(Link("/some-resource", IanaLinkRelations.PREFETCH))
-		model.add(Link("/some-resource", IanaLinkRelations.AUTHOR))
-		model.add(Link("/some-resource", IanaLinkRelations.EDIT))
-		model.add(Link("/some-resource", IanaLinkRelations.LAST))
-
-		return model
-
-	}
+			}
 }
 
 
