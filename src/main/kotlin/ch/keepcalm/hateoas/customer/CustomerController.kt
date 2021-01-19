@@ -19,14 +19,14 @@ class CustomerController(private val customerService: CustomerService) {
         ).withSelfRel()
 
         val update : Affordance = afford<Any> {
-            methodOn(CustomerController::class.java).update(null, id)
+            methodOn(CustomerController::class.java).update(customer = Customer(firstName = "", lastName = ""), id)
         }
 //        val aggregateRoot : Link = linkTo(methodOn(CustomerController::class.java))
         return EntityModel.of(customerService.getCustomer(id) as Customer, selfLink)
     }
 
     @PutMapping(value = ["/api/customers/{id}"])
-    fun update(@RequestBody customer: EntityModel<Customer>?, @PathVariable id: Int) {
+    fun update(@RequestBody customer: Customer, @PathVariable id: Int) {
         println("Update")
     }
 
