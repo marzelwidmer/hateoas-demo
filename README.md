@@ -1,3 +1,4 @@
 # hateoas-demo
+[HATEOAS Spring Documentation](https://docs.spring.io/spring-hateoas/docs/current/reference/html/#preface)
 
-(https://docs.spring.io/spring-hateoas/docs/1.1.0.RELEASE/reference/html/#server.affordances)[https://docs.spring.io/spring-hateoas/docs/1.1.0.RELEASE/reference/html/#server.affordances]
+
