@@ -1,4 +1,4 @@
-package ch.keepcalm.hateoasdemo
+package ch.keepcalm.hateoas
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -62,7 +62,4 @@ class PersonController{
 
 
 }
-
-
-
 open class PersonModel(val id: Int, val firstname: String, val lastname : String) : RepresentationModel<PersonModel>()
