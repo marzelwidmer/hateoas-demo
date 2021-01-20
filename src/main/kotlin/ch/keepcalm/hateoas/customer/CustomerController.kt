@@ -1,5 +1,6 @@
 package ch.keepcalm.hateoas.customer
 
+import ch.keepcalm.hateoas.message.MessageResource
 import org.springframework.hateoas.*
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn
@@ -32,7 +33,10 @@ class CustomerController(private val customerService: CustomerService) {
         val selfLink: Link = linkTo(
             methodOn(CustomerController::class.java).all()
         ).withSelfRel()
-        return CollectionModel.of(customerService.getCustomers(), selfLink)
+
+        val messages : Link = linkTo(methodOn(MessageResource::class.java).index()).withRel("messages")
+
+        return CollectionModel.of(customerService.getCustomers(), selfLink, messages)
     }
 
 
