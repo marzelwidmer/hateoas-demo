@@ -52,5 +52,5 @@ class CustomerController(private val customerService: CustomerService) {
 //            .withName(IanaLinkRelations.CREATE_FORM_VALUE)
 //            .toLink()
 //        return EntityModel.of(customerService.getCustomer(id) as Customer, selfLink, affordance)
-//    }
+    }
 }
