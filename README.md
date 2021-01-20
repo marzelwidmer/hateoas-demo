@@ -3,6 +3,9 @@
 - [HATEOAS Spring Documentation | PreFace](https://docs.spring.io/spring-hateoas/docs/current/reference/html/#preface)
 
 
+# Hal-Browser
+- [Hal-Browser /hal/messages](http://localhost:8080/browser/index.html#/hal/messages)
+- [Hal-Browser /api/customer](http://localhost:8080/browser/index.html#/api/customers)
 
 
 Some Links:
