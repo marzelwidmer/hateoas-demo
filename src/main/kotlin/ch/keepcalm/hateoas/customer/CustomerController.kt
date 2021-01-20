@@ -42,15 +42,4 @@ class CustomerController(private val customerService: CustomerService) {
         println(customer)
         return  ResponseEntity.EMPTY
     }
-
-//    @GetMapping("/employees/{id}")
-//    fun findOne(@PathVariable id: Int): EntityModel<Customer> {
-//        val selfLink: Link = linkTo(methodOn(CustomerController::class.java).one(id)).withSelfRel()
-//        val affordance: Link = Affordances.of(linkTo(methodOn(CustomerController::class.java).add(Customer(firstName = "", lastName = "") )).withRel(IanaLinkRelations.CREATE_FORM_VALUE))
-//            .afford(HttpMethod.POST)
-//            .withInput(Customer::class.java)
-//            .withName(IanaLinkRelations.CREATE_FORM_VALUE)
-//            .toLink()
-//        return EntityModel.of(customerService.getCustomer(id) as Customer, selfLink, affordance)
-    }
 }
