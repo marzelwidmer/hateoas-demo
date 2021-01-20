@@ -15,3 +15,4 @@ Some Links:
 - [DDD & REST](https://gotocon.com/dl/goto-berlin-2015/slides/OliverGierke_DDD&REST-DomainDrivenAPIsfortheWeb.pdf)
 - [how-to-build-hypermedia-api-with-spring-hateoas](https://grapeup.com/blog/how-to-build-hypermedia-api-with-spring-hateoas/)
 - [SpringOne 2020 - Building Flexible APIs with Spring HATEOAS](https://speakerdeck.com/gregturn/springone-2020-building-flexible-apis-with-spring-hateoas?slide=36)
+- [what-is-alps](https://apievangelist.com/2015/03/10/what-is-alps/)
