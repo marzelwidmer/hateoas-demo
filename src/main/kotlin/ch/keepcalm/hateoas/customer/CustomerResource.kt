@@ -36,7 +36,7 @@ class CustomerController(private val customerService: CustomerService) {
 
         val messages : Link = linkTo(methodOn(MessageResource::class.java).index()).withRel("messages")
 
-        return CollectionModel.of(customerService.getCustomers(), selfLink, messages)
+        return CollectionModel.of(customerService.getCustomers(), selfLink)
     }
 
 
