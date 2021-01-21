@@ -3,14 +3,17 @@ package ch.keepcalm.hateoas.customer
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerService(private val customerRepository: CustomerRepository) {
+class CustomerService(private val repository: CustomerRepository) {
 
-    fun getCustomer(id: Int): Customer? {
-        return customerRepository.findById(id)
+    fun findCustomerById(id: String): Customer? {
+        return repository.findById(id).orElse(null)
     }
 
-    fun getCustomers() : List<Customer> {
-        return customerRepository.getAll()
+    fun findCustomers() : List<Customer> {
+        return repository.findCustomers()
     }
 
+    fun post(customer: Customer) {
+        repository.save(customer)
+    }
 }

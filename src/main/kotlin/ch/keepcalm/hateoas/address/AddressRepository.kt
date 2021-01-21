@@ -1,5 +1,5 @@
-package ch.keepcalm.hateoas.person
+package ch.keepcalm.hateoas.address
 
 import org.springframework.data.repository.CrudRepository
 
-internal interface AddressRepository : CrudRepository<Address?, Long?>
+interface AddressRepository : CrudRepository<Address?, Long?>

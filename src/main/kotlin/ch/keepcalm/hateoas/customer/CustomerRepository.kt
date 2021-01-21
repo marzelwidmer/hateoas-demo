@@ -1,17 +1,12 @@
 package ch.keepcalm.hateoas.customer
 
-import org.springframework.stereotype.Repository
+import ch.keepcalm.hateoas.message.Message
+import org.springframework.data.jdbc.repository.query.Query
+import org.springframework.data.repository.CrudRepository
 
-@Repository
-class CustomerRepository {
+interface CustomerRepository : CrudRepository<Customer, String> {
 
-    private val customers = mapOf(1 to Customer(firstName = "John", lastName= "Doe"), 2 to Customer(firstName = "Jane", lastName= "Doe"), 3 to Customer(firstName = " Jack", lastName= "Doe"))
+    @Query("select * from customers")
+    fun findCustomers(): List<Customer>
 
-    fun findById(id: Int): Customer? {
-      return customers[id]
-    }
-
-    fun getAll(): List<Customer> {
-        return customers.values.toList()
-    }
 }

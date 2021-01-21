@@ -11,39 +11,36 @@ import org.springframework.http.ResponseEntity
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 
 @RestController
-class CustomerController(private val customerService: CustomerService) {
+class CustomerResource(private val service: CustomerService) {
 
-    @GetMapping(value = ["/api/customers/{id}"])
-    fun one(@PathVariable id: Int): EntityModel<Customer> {
+    @GetMapping(value = ["/customers/{id}"])
+    fun one(@PathVariable id: String): EntityModel<Customer> {
         val selfLink: Link = linkTo(
-            methodOn(CustomerController::class.java).one(id)
+            methodOn(CustomerResource::class.java).one(id)
         ).withSelfRel()
-        val create: Affordance = afford<CustomerController> {
-            methodOn(CustomerController::class.java).add(customer = Customer(firstName = "", lastName = ""))
+        val create: Affordance = afford<CustomerResource> {
+            methodOn(CustomerResource::class.java).add(customer = Customer(firstName = "", lastName = ""))
         }
-        val aggregateRoot : Link = linkTo(methodOn(CustomerController::class.java).all()).withRel("customers")
-            .andAffordance(WebMvcLinkBuilder.afford(methodOn(CustomerController::class.java).add(customer = Customer(firstName = "", lastName = ""))))
+        val aggregateRoot : Link = linkTo(methodOn(CustomerResource::class.java).all()).withRel("customers")
+            .andAffordance(WebMvcLinkBuilder.afford(methodOn(CustomerResource::class.java).add(customer = Customer(firstName = "", lastName = ""))))
 
-        return EntityModel.of(customerService.getCustomer(id) as Customer, selfLink.andAffordance(create), aggregateRoot)
+        return EntityModel.of(service.findCustomerById(id) as Customer, selfLink.andAffordance(create), aggregateRoot)
     }
 
 
-    @GetMapping(value = ["/api/customers"])
+    @GetMapping(value = ["/customers"])
     fun all(): CollectionModel<Customer> {
         val selfLink: Link = linkTo(
-            methodOn(CustomerController::class.java).all()
+            methodOn(CustomerResource::class.java).all()
         ).withSelfRel()
-
-        val messages : Link = linkTo(methodOn(MessageResource::class.java).index()).withRel("messages")
-
-        return CollectionModel.of(customerService.getCustomers(), selfLink)
+        val messagesLink : Link = linkTo(methodOn(MessageResource::class.java).index()).withRel("messages")
+        return CollectionModel.of(service.findCustomers(), selfLink, messagesLink)
     }
 
 
-    @PostMapping(value = ["/api/customers"])
+    @PostMapping(value = ["/customers"])
     fun add(@RequestBody customer: Customer): HttpEntity<*> {
-        println("Add")
-        println(customer)
+        service.post(customer)
         return  ResponseEntity.EMPTY
     }
 }

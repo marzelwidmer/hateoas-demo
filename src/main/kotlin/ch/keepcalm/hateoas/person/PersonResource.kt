@@ -1,6 +1,5 @@
 package ch.keepcalm.hateoas.person
 
-import ch.keepcalm.hateoas.message.MessageResource
 import org.springframework.hateoas.CollectionModel
 import org.springframework.hateoas.Link
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class PersonController (private val service : PersonService) {
+class PersonResource (private val service : PersonService) {
 
     @PostMapping(value = ["/persons"])
     fun post(@RequestBody person: Person){
@@ -19,7 +18,7 @@ class PersonController (private val service : PersonService) {
 
     @GetMapping(value = ["/persons"])
     fun index (): CollectionModel<Person> {
-        val selfLink : Link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonController::class.java).index()).withSelfRel()
+        val selfLink : Link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(PersonResource::class.java).index()).withSelfRel()
         return CollectionModel.of(service.findPersons() , selfLink)
     }
 }

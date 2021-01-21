@@ -1,15 +1,10 @@
-package ch.keepcalm.hateoas.message
+package ch.keepcalm.hateoas.person
 
 import org.springframework.data.jdbc.repository.query.Query
 import org.springframework.data.repository.CrudRepository
-import ch.keepcalm.hateoas.person.Person
 
+interface PersonRepository : CrudRepository<Person?, Long?> {
 
-
-
-interface MessageRepository : CrudRepository<Message, String> {
-
-    @Query("select * from messages")
-    fun findMessages(): List<Message>
+    @Query(value = "select * from persons")
+    fun findPersons(): List<Person>?
 }
-internal interface PersonRepository : CrudRepository<Person?, Long?>

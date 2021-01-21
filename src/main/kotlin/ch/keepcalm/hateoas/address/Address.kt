@@ -1,4 +1,4 @@
-package ch.keepcalm.hateoas.person
+package ch.keepcalm.hateoas.address
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table

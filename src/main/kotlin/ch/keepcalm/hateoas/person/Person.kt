@@ -1,13 +1,9 @@
 package ch.keepcalm.hateoas.person
 
-@Entity
-class Person {
-    @Id
-    @GeneratedValue
-    private val id: Long? = null
-    private val firstName: String? = null
-    private val lastName: String? = null
+import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Table
 
-    @OneToOne
-    private val address: Address? = null
-}
+@Table(value = "PERSONS")
+data class Person (@Id val id: String?, val firstName: String, val lastName: String)
+
+
