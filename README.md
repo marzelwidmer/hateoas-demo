@@ -4,8 +4,7 @@
 
 
 # Hal-Browser
-- [Hal-Browser /hal/messages](http://localhost:8080/browser/index.html#/hal/messages)
-- [Hal-Browser /api/customer](http://localhost:8080/browser/index.html#/api/customers)
+- [HAL-Browser](http://localhost:8080/explorer/index.html#uri=/)
 
 # H2-Console
 - [http://localhost:8080/h2-console](http://localhost:8080/h2-console)

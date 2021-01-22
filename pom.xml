@@ -42,13 +42,8 @@
 			<artifactId>evo-inflector</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-hal-browser -->
-		<!--<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-rest-hal-browser</artifactId>
-			<version>3.3.6.RELEASE</version>
-		</dependency>-->
-		<!-- HAL Explorer-->
+
+		<!-- HAL Explorer http://localhost:8080/explorer/index.html#uri=/ -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-rest-hal-explorer</artifactId>
