@@ -4,7 +4,8 @@
 
 
 # Hal-Browser
-- [HAL-Browser](http://localhost:8080/explorer/index.html#uri=/)
+- [spring-data-rest-hal-explorer](http://localhost:8080/explorer/index.html#uri=/)
+- [spring-data-rest-hal-browser](http://localhost:8080/browser/index.html#/)
 
 # H2-Console
 - [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
